@@ -7,13 +7,15 @@
  * electron-builder's publish configuration. Until the release is uploaded the
  * links resolve to the releases page rather than a broken asset.
  */
-const OWNER_REPO = 'devilman-lab/crypto-intelligence'
+const OWNER_REPO = 'Maxdev070920/crypto-intelligence'
 const VERSION = '0.1.0'
+/** Git tag of the GitHub release that holds the assets. */
+const RELEASE_TAG = 'desktop_1.0.0'
 /** Set to true once the assets for VERSION have been uploaded to GitHub Releases. */
 const ASSETS_PUBLISHED = true
 
 const releasesUrl = `https://github.com/${OWNER_REPO}/releases`
-const assetUrl = (file: string) => (ASSETS_PUBLISHED ? `https://github.com/${OWNER_REPO}/releases/download/v${VERSION}/${file}` : releasesUrl)
+const assetUrl = (file: string) => (ASSETS_PUBLISHED ? `https://github.com/${OWNER_REPO}/releases/download/${RELEASE_TAG}/${file}` : releasesUrl)
 
 export interface Artifact {
   kind: 'installer' | 'portable'
@@ -37,20 +39,20 @@ export const release = {
   installer: {
     kind: 'installer',
     label: 'Windows Installer',
-    fileName: `Crypto-Intelligence-Setup-${VERSION}.exe`,
-    downloadUrl: assetUrl(`Crypto-Intelligence-Setup-${VERSION}.exe`),
+    fileName: 'bundle-Setup.exe',
+    downloadUrl: assetUrl('bundle-Setup.exe'),
     sizeLabel: '~110 MB',
-    sha256: '408774b256ae05508476a3ca4dc2153aed9b1dfe45ad3e791233b3b632e46571',
+    sha256: '53092523e697c74250f8cf490bca2fa0ac8b6f076372ea3d80bf3a19ff6db9a1',
     description: 'Installs Crypto Intelligence in the normal per-user Windows application location with Start-menu and desktop shortcuts.',
     notes: ['Recommended for everyday use', 'Data is stored in your Windows user profile', 'Supports in-app update checks']
   } satisfies Artifact,
   portable: {
     kind: 'portable',
     label: 'Windows Portable',
-    fileName: `Crypto-Intelligence-Portable-${VERSION}.exe`,
-    downloadUrl: assetUrl(`Crypto-Intelligence-Portable-${VERSION}.exe`),
+    fileName: 'bundle-portable.exe',
+    downloadUrl: assetUrl('bundle-portable.exe'),
     sizeLabel: '~110 MB',
-    sha256: '0b0499d5b5387d37e8a42cb7a26fe13f9a29207d367eedd7bf0bbb39078efbf5',
+    sha256: '7b36f2182c6502f193df466b11f9b1afee1939efe9ef0ddbe2dde11e2efbeda3',
     description: 'Run Crypto Intelligence directly without installing it. Your data is stored in a "Crypto Intelligence Data" folder next to the executable.',
     notes: ['No installation wizard, no administrator rights', 'Copy the .exe and its data folder together to move it', 'Updates: download the new portable .exe and replace the old one']
   } satisfies Artifact
